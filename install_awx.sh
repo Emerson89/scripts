@@ -1,7 +1,12 @@
 #!/bin/bash
 
 echo "Install dependencies"
-sudo dnf install epel-release python3-pip git ansible -y
+sudo dnf install epel-release python3-pip git ansible gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 -y
+
+echo "Disable Selinux"
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+sudo alternatives --set python /usr/bin/python3
 
 echo "Install docker"
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
