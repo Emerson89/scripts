@@ -6,8 +6,17 @@ sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
 cat /etc/selinux/config | grep SELINUX=
 
 echo "Install dependencies"
+<<<<<<< HEAD
 sudo dnf install epel-release -y
 sudo dnf install git gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 python3-pip ansible -y
+=======
+sudo dnf install epel-release python3-pip git ansible gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 -y
+
+echo "Disable Selinux"
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+sudo alternatives --set python /usr/bin/python3
+>>>>>>> 05454f23d6c762633da44b3ae508e7744d837465
 
 echo "Install docker"
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
