@@ -1,15 +1,24 @@
 #!/bin/bash
 user=$1
-senha=$2
+#senha=$2
 
 echo -e "Escolha a opção desejada: \n1 - Dump\n2 - Restore"
+
+rpm -qs pv &> /dev/null
+if [ $? -ne 0 ]
+   then
+      echo "Pacote pv não instalado"
+      sudo yum install pv -y
+   else
+      echo "Pacote pv instalado"
+fi
 
 while :
 do
   read INPUT
   case $INPUT in
        1)
-         mysqldump -u $1 -p$2 zabbix | bzip2 > zbx-bkp.sql.bz2 | pv
+         mysqldump -u $1 zabbix --single-transaction | pv | bzip2 > zbx-bkp.sql.bz2
          echo
          sleep 2
          echo "Backup Realizado"
@@ -21,7 +30,7 @@ do
          break
          ;;
        2)
-         bunzip2 < zbx-bkp.sql.bz2 | /dev/null 1>&1 | mysqldump -u $1 -p$2 zabbix | pv
+         bunzip2 < zbx-bkp.sql.bz2 | pv | mysql -u $1 zabbix 
          echo
          echo "Restore realizado"
          break
