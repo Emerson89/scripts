@@ -6,17 +6,17 @@ sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
 cat /etc/selinux/config | grep SELINUX=
 
 echo "Install dependencies"
-sudo dnf install epel-release -y
-sudo dnf install git gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 python3-pip ansible -y
+sudo yum install epel-release -y
+sudo yum install curl git gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 python3-pip ansible -y
 
 echo "Install docker"
-sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-dnf install docker-ce -y
+sudo yum config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce -y
 systemctl enable --now docker.service
 
 echo "Set python alternatives"
-alternatives --set python /usr/bin/python3
-pip3 install docker-compose
+sudo alternatives --set python /usr/bin/python3
+sudo pip3 install docker-compose
 
 echo "Instal docker-compose"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
