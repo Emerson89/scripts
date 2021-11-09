@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template Elasticsearch - Mandic</template>
-            <name>Template Elasticsearch - Mandic</name>
+            <template>Template Elasticsearch - Zabbix</template>
+            <name>Template Elasticsearch - Zabbix</name>
             <description/>
             <groups>
                 <group>
@@ -1423,7 +1423,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;ClusterIndexWritesBlocked&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].min(5m)}&gt;0</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;ClusterIndexWritesBlocked&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].min(5m)}&gt;0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Cluster - {HOST.NAME} está bloqueando solicitações de gravação</name>
@@ -1439,7 +1439,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;CPUUtilization&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=90</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;CPUUtilization&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=90</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Critical CPU Load {HOST.NAME} - {ITEM.LASTVALUE}</name>
@@ -1455,7 +1455,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>({Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/({Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;ClusterUsedSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;Nodes&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}+{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}))*100&lt;10</expression>
+            <expression>({Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/({Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;ClusterUsedSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;Nodes&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}+{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}))*100&lt;10</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Free disk less than 10% on {HOST.NAME}</name>
@@ -1471,7 +1471,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>({Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/({Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;ClusterUsedSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;Nodes&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}+{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}))*100&lt;20</expression>
+            <expression>({Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/({Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;ClusterUsedSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}/{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;Nodes&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}+{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;FreeStorageSpace&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}))*100&lt;20</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Free disk less than 20% on {HOST.NAME}</name>
@@ -1487,7 +1487,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;JVMMemoryPressure&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].min(5m)}&gt;=88</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;JVMMemoryPressure&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].min(5m)}&gt;=88</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>JVM Memory Pressure greater than 88% on  {HOST.NAME}</name>
@@ -1503,7 +1503,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;KibanaHealthyNodes&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}=0</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;KibanaHealthyNodes&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}=0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Kibana está inacessível in {HOST.NAME}</name>
@@ -1519,7 +1519,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;AutomatedSnapshotFailure&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=1</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;AutomatedSnapshotFailure&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Snapshot automático falhou in {HOST.NAME}</name>
@@ -1535,7 +1535,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;ClusterStatus.red&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=1</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;ClusterStatus.red&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Verificar cluster {HOST.NAME} in Status Red</name>
@@ -1551,7 +1551,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Elasticsearch - Mandic:cloudwatch-zabbix.py[&quot;ClusterStatus.yellow&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=1</expression>
+            <expression>{Template Elasticsearch - Zabbix:cloudwatch-zabbix.py[&quot;ClusterStatus.yellow&quot;,&quot;Average&quot;,&quot;DomainName,ClientId&quot;,&quot;{HOST.HOST},{$CLIENT_ID}&quot;,&quot;AWS/ES&quot;,&quot;{$REGION}&quot;].last()}&gt;=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Verificar cluster  {HOST.NAME} in Status Yellow</name>

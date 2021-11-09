@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template SNS-SMSMonth - Mandic</template>
-            <name>Template SNS-SMSMonth - Mandic</name>
+            <template>Template SNS-SMSMonth - Zabbix</template>
+            <name>Template SNS-SMSMonth - Zabbix</name>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -83,18 +83,18 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template SNS-SMSMonth - Mandic:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Mandic:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.7</expression>
+            <expression>{Template SNS-SMSMonth - Zabbix:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Zabbix:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.7</expression>
             <name>{HOSTNAME} está maior que 70%  (Ultima coleta: {ITEM.LASTVALUE})</name>
             <priority>HIGH</priority>
             <dependencies>
                 <dependency>
                     <name>{HOSTNAME} está maior que 90%  (Ultima coleta: {ITEM.LASTVALUE})</name>
-                    <expression>{Template SNS-SMSMonth - Mandic:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Mandic:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.9</expression>
+                    <expression>{Template SNS-SMSMonth - Zabbix:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Zabbix:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.9</expression>
                 </dependency>
             </dependencies>
         </trigger>
         <trigger>
-            <expression>{Template SNS-SMSMonth - Mandic:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Mandic:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.9</expression>
+            <expression>{Template SNS-SMSMonth - Zabbix:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Zabbix:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.9</expression>
             <name>{HOSTNAME} está maior que 90%  (Ultima coleta: {ITEM.LASTVALUE})</name>
             <priority>DISASTER</priority>
         </trigger>

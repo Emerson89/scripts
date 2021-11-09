@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>RDS discovery status - Mandic</template>
-            <name>RDS discovery status - Mandic</name>
+            <template>RDS discovery status - Zabbix</template>
+            <name>RDS discovery status - Zabbix</name>
             <groups>
                 <group>
                     <name>RDS</name>
@@ -74,7 +74,7 @@
                                     <dependencies>
                                         <dependency>
                                             <name>Status do RDS: {#DEVICENAME} =&gt; {ITEM.LASTVALUE1}</name>
-                                            <expression>{RDS discovery status - Mandic:state_rds.py[&quot;{#DEVICENAME}&quot;,&quot;{$REGION}&quot;].last()}=9</expression>
+                                            <expression>{RDS discovery status - Zabbix:state_rds.py[&quot;{#DEVICENAME}&quot;,&quot;{$REGION}&quot;].last()}=9</expression>
                                         </dependency>
                                     </dependencies>
                                 </trigger_prototype>
