@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2021-11-09T19:55:01Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SNS-SMSMonth - Mandic</template>
+            <name>Template SNS-SMSMonth - Mandic</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Custo SNS</name>
+                </application>
+                <application>
+                    <name>Hostname</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>SMSMonthToDateSpentUSD</name>
+                    <type>EXTERNAL</type>
+                    <key>cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;]</key>
+                    <delay>30s</delay>
+                    <history>8d</history>
+                    <trends>180d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>USD</units>
+                    <applications>
+                        <application>
+                            <name>Custo SNS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Host name of zabbix_agentd running</name>
+                    <key>hostname</key>
+                    <delay>30s</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>Hostname</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Custo configurado</name>
+                    <type>EXTERNAL</type>
+                    <key>sns-custo.py[&quot;{$REGION}&quot;]</key>
+                    <delay>12h</delay>
+                    <history>8d</history>
+                    <trends>180d</trends>
+                    <units>USD</units>
+                    <applications>
+                        <application>
+                            <name>Custo SNS</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.attributes.MonthlySpendLimit</params>
+                        </step>
+                    </preprocessing>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$REGION}</macro>
+                    <value>us-east-1</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template SNS-SMSMonth - Mandic:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Mandic:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.7</expression>
+            <name>{HOSTNAME} está maior que 70%  (Ultima coleta: {ITEM.LASTVALUE})</name>
+            <priority>HIGH</priority>
+            <dependencies>
+                <dependency>
+                    <name>{HOSTNAME} está maior que 90%  (Ultima coleta: {ITEM.LASTVALUE})</name>
+                    <expression>{Template SNS-SMSMonth - Mandic:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Mandic:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.9</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template SNS-SMSMonth - Mandic:cloudwatch-sns.py[&quot;SMSMonthToDateSpentUSD&quot;,&quot;Average&quot;,&quot;AWS/SNS&quot;,&quot;{$REGION}&quot;].last()}/{Template SNS-SMSMonth - Mandic:sns-custo.py[&quot;{$REGION}&quot;].last()}&gt;=0.9</expression>
+            <name>{HOSTNAME} está maior que 90%  (Ultima coleta: {ITEM.LASTVALUE})</name>
+            <priority>DISASTER</priority>
+        </trigger>
+    </triggers>
+</zabbix_export>

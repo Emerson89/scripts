@@ -8,3 +8,5 @@ elif [ $STATE == "inactive" ]
    then
       echo "0"
 fi
+
+## systemctl list-unit-files --all --state=enabled --type service | grep cron.service  | awk '{print $1}'
