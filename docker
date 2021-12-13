@@ -1,0 +1,8 @@
+docker run -d --hostname gitlab.example.com \
+ -p 443:443 -p 80:80 -p 2022:22 \
+ --name gitlab \
+ --restart always \
+ -v /docker/gitlab/config:/etc/gitlab \
+ -v /docker/gitlab/logs/:/var/log/gitlab \
+ -v /docker/gitlab/data/:/var/opt/gitlab \
+ gitlab/gitlab-ce:latest
