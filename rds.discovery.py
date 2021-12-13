@@ -20,3 +20,5 @@ def statusvif():
     print(json.dumps(raw))
 
 statusvif()
+
+
