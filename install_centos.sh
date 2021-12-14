@@ -15,7 +15,6 @@ systemctl enable --now docker
 systemctl status docker | grep "Active:"
 usermod -aG docker ${USER}
 
-
 echo "Install K8s..."
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -52,3 +51,6 @@ kubectl get nodes
 
 echo "Get All namespaces Default"
 kubectl get all
+
+## Install rancher
+sudo docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
