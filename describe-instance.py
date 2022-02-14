@@ -17,7 +17,12 @@ responsedx = client.describe_instances()
 for v in responsedx['Reservations']:
  for printout in v['Instances']:
   for printname in printout['Tags']: 
-     with open('ipaddress.csv', 'a') as file:
+    Filters=[
+        {
+            'Name': 'tag:Name'
+        }
+    ]
+    with open('ipaddress.csv', 'a') as file:
         w = csv.writer(file, delimiter=';')
         w.writerow([printname['Value'],printout['PrivateIpAddress']])
-     print("Relatório gerado")
+    print("Relatório gerado")
