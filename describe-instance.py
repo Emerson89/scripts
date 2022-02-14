@@ -9,7 +9,7 @@ try:
     nregion = sys.argv[3]
 
 except:
-    print ("Example: describe-address.py aws_access_key_id=accessKey aws_secret_access_key=secretKey REGION")
+    print ("Example: ./describe-address.py accessKey secretKey region")
     sys.exit(1)
 
 client = boto3.client('ec2',  aws_access_key_id=accessKey, aws_secret_access_key=secretKey, region_name=nregion)
