@@ -16,7 +16,8 @@ client = boto3.client('ec2',  aws_access_key_id=accessKey, aws_secret_access_key
 responsedx = client.describe_instances()
 for v in responsedx['Reservations']:
  for printout in v['Instances']:
+  for printname in printout['Tags']: 
      with open('ipaddress.csv', 'a') as file:
-        w = csv.writer(file)
-        w.writerow([printout['PrivateIpAddress']])
+        w = csv.writer(file, delimiter=';')
+        w.writerow([printname['Value'],printout['PrivateIpAddress']])
      print("Relatório gerado")
