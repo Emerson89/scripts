@@ -12,7 +12,7 @@ if [ "$DIST" = 'debian' ]; then
   cd /tmp
   git clone https://github.com/Emerson89/zabbix-agent.git
   cd zabbix-agent
-  ansible-playbook -c local -i hosts --extra-vars "zabbix_server_ip=10.99.154.8,10.99.16.100,10.99.188.197 zabbix_version=6.0 zabbix_agent2_install=True porta_agent2=10050 zabbix_hostmetadata=os-linux-serasa" playbook.yml
+  ansible-playbook -c local -i hosts --extra-vars "zabbix_server_ip=127.0.0.1 zabbix_version=6.0 zabbix_agent2_install=True porta_agent2=10050 zabbix_hostmetadata=os-linux-serasa" playbook.yml
   rm -rf /tmp/zabbix-agent
 elif [ "$DIST" = 'centos rhel fedora' ]; then
   echo '===Install amz 2==='
@@ -23,7 +23,7 @@ elif [ "$DIST" = 'centos rhel fedora' ]; then
   cd /tmp
   git clone https://github.com/Emerson89/zabbix-agent.git
   cd zabbix-agent
-  ansible-playbook -c local -i hosts --extra-vars "zabbix_server_ip=10.99.154.8,10.99.16.100,10.99.188.197 zabbix_version=6.0 zabbix_agent2_install=True porta_agent2=10050 zabbix_hostmetadata=os-linux-serasa" playbook.yml
+  ansible-playbook -c local -i hosts --extra-vars "zabbix_server_ip=127.0.0.1 zabbix_version=6.0 zabbix_agent2_install=True porta_agent2=10050 zabbix_hostmetadata=os-linux-serasa" playbook.yml
   rm -rf /tmp/zabbix-agent
 elif [ "$DIST" = 'rhel fedora' ]; then
   echo '===Install RHEL==='
@@ -33,6 +33,6 @@ elif [ "$DIST" = 'rhel fedora' ]; then
   cd /tmp
   git clone https://github.com/Emerson89/zabbix-agent.git
   cd zabbix-agent
-  ansible-playbook -c local -i hosts --extra-vars "zabbix_server_ip=10.99.154.8,10.99.16.100,10.99.188.197 zabbix_version=6.0 zabbix_agent2_install=True porta_agent2=10050 zabbix_hostmetadata=os-linux-serasa" playbook.yml
+  ansible-playbook -c local -i hosts --extra-vars "zabbix_server_ip=127.0.0.1 zabbix_version=6.0 zabbix_agent2_install=True porta_agent2=10050 zabbix_hostmetadata=os-linux-serasa" playbook.yml
   rm -rf /tmp/zabbix-agent
 fi

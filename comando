@@ -1,1 +1,2 @@
 aws ec2 describe-instances --filters Name=vpc-id,Values=vpc-a1716ac5 --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId.Value[0]]' --output text | sed -e 's/None/\n/g' | sed '$!N;s/\n/ /'
+aws ecs describe-services --cluster name-cluster --services service --query 'services[*].desiredCount' --output text
