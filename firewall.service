@@ -4,6 +4,7 @@ Description=Servico Firewall
 [Service]
 Type=simple
 RemainAfterExit=yes
+User=ubuntu
 ExecStart=/opt/firewall.sh start
 ExecStop=/opt/firewall.sh stop
 ExecReload=/opt/firewall.sh restart
